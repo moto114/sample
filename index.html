@@ -6,12 +6,14 @@
 <body>
 <div id="t1"></div>
 <script>
-x = "temp";
-document.write(x);
-alert("Hello world!!");
-console.log("Hello world!?");
-dd = new Date();
-document.write(dd.toLocaleString());
+  SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+  const recognition = new SpeechRecognition();
+
+  recognition.onresult = (event) => {
+    alert(event.results[0][0].transcript);
+  }
+
+  recognition.start();
 </script>
 </body>
 </html>
